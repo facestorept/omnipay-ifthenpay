@@ -51,7 +51,15 @@ if ($response->isSuccessful()) {
 **Callback Validation**
 
 ```php
-$response = $gateway->completePurchase(array('transactionReference' => '995 000 109','amount' => '100.99','currency' => 'EUR', 'ChaveAntiPhishingCallback' => 'XXXXXX'))->send();
+$purchaseData = array(
+    'transactionReference' => '995 000 109',
+    'amount' => '100.99',
+    'currency' => 'EUR', 
+    'ChaveAntiPhishingCallback' => 'XXXXXX',
+);
+
+$response = $gateway->completePurchase($purchaseData)
+    ->send();
 
 if ($response->isSuccessful())
 {
